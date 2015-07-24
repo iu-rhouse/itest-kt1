@@ -1,0 +1,22 @@
+{
+    "version": "7-07-14",
+    "commands": [
+        "command.report.status", // 0
+        "command.reset.katie",
+        "command.quick.turn",
+        "command.do.explore",
+        "command.360.turn",
+        "command.data.e",
+        "command.data.t",
+        "command.do.roomba", // 7
+        "command.take.photo",
+        "command.one.photo",
+        "command.drive.one.step",
+        "command.drive.halt",
+        "command.drive.shoo",
+        "command.drive.greet",  // 13
+        "command.tilt.camera", // 14
+        "command.beep",
+        "command.scan"   // 16
+    ]
+}

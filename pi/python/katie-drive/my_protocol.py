@@ -1,0 +1,2 @@
+class Protocols():
+    commands = None

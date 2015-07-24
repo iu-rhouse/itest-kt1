@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket Server</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            var websockets = new Array();
+            var server_ip = "156.56.246.76";
+
+            function setup(endpoint) {
+                if ("WebSocket" in window)
+                {
+                    console.log("WebSocket is supported by your Browser!");
+                    // Let us open a web socket
+                    var websocket = new WebSocket("ws://" + server_ip + ":8080/SLAM/" + endpoint);
+                    websocket.onopen = function()
+                    {
+                        console.log("Socket is open...");
+                    };
+                    websocket.onmessage = function(evt)
+                    {
+                        var received_msg = evt.data;
+                        console.log("Message is received: " + received_msg);
+                        $("#out").append("<p style='font-size: 24px;'>" + received_msg + "</p>");
+
+                    };
+                    websocket.onclose = function()
+                    {
+                        console.log("Connection is closed...");
+                    };
+                    websockets.push(websocket);
+                }
+                else
+                {
+                    // The browser doesn't support WebSocket
+                    console.log("WebSocket NOT supported by your Browser!");
+                }
+            }
+
+            setup("datalog");
+            setup("driveKatie");
+
+        </script>
+    </head>
+    <body>
+        <input id="typein" type="text" value="Enter message here"/>
+        <button id="send">Send</button>
+        <script>
+            $("#send").click(function() {
+                websockets[1].send($("#typein").val());
+                $("#typein").val("");
+            });
+        </script>
+        <hr/>
+        <p>Received Messages:</p>
+        <div id="out"></div>
+    </body>
+</html>

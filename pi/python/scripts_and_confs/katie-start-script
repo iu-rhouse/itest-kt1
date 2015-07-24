@@ -1,0 +1,7 @@
+#! /bin/bash
+# /etc/init.d/katie-start-script
+echo "Starting katie-drive..."
+nohup python /home/pi/katie-drive/start.py 1 &
+echo $! > /home/pi/katie-drive/my-pid.txt
+echo "done"
+exit 0

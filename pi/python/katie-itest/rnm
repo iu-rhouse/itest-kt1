@@ -1,0 +1,4 @@
+for filename in *; do 
+    [ -f "$filename" ] || continue
+    mv $filename ${filename//my_/}
+done

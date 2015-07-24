@@ -1,0 +1,8 @@
+{
+    "name": "slam_dummy_server",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "ws": "*"
+    }
+}
